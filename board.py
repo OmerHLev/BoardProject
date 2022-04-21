@@ -27,4 +27,4 @@ class board:
         self.board_array[x-1][y-1] = content # -1 to convert user input values to array compatable
 
     def print_board_state(self):
-        print(self.board_array)
+        print(np.rot90(np.flip(self.board_array),k=3))#rotating the matrix to follow normal x,y axis
