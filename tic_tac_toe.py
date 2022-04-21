@@ -52,7 +52,7 @@ class tic_tac_toe(game):
             
     def legal_move(self,x,y):
         if self.game_board.check_in_board(x,y) == True:
-            if self.game_board.board_array[x-1][y-1] =='':
+            if self.game_board.board_array[x-1][y-1] =='E':
                 return True
             else:
                 return False

@@ -6,15 +6,15 @@ class board:
     board_array=[]
     
     def __init__(self,length,width):
-        self.board_array=[]
+        self.board_array = np.zeros(length * width,dtype=object).reshape((length,width))
         self.grid_length = length
         self.grid_width = width
+        for i in range (self.grid_length):
+            for j in range (self.grid_width):
+
+                if self.board_array[(i,j)] ==0:
+                    self.board_array[(i,j)]='E'
         
-        
-        for i in range(self.grid_width):
-            self.board_array.append([])
-            for j in range (self.grid_length):
-                self.board_array[i].append('')
 
     def check_in_board(self,x,y):
         
@@ -22,5 +22,9 @@ class board:
             return True
         else:
             return False
+
     def insert(self,x,y,content):
         self.board_array[x-1][y-1] = content
+
+    def print_board_state(self):
+        print(self.board_array)

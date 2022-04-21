@@ -20,6 +20,7 @@ class game:
     def run(self):
         ended,result = self.check_winner()
         while (ended!=True):
+            self.game_board.print_board_state()
             self.turn(input())
             ended,result = self.check_winner()
         print(result)
