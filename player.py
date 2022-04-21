@@ -5,7 +5,7 @@ from unicodedata import name
 class player:
     name =''
     pieces_on_board = []
-    piece_type = ''
+    piece_types = []
 
     def __init__(self,name_input):
         self.name = name_input
@@ -13,12 +13,13 @@ class player:
 
 class tic_tac_toe_player(player):
     def __init__(self,name_input):
+        piece_types = []
         if name_input == 'X':
             self.name = name_input
-            self.piece_type = 'x'
+            self.piece_types = ['x']
         elif name_input == 'O':
             self.name = name_input
-            self.piece_type = 'o'
+            self.piece_types = ['o']
         else:
             print('Invalid tic tac toe player type')
             return False

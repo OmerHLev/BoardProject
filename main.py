@@ -6,7 +6,7 @@ from checkers import checkers
 
 #running tic tac toe
 G = tic_tac_toe()
-#G.run()
+G.run()
 
 C = checkers()
-C.run()
+#C.run()

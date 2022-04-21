@@ -9,7 +9,7 @@ class tic_tac_toe(game):
             self.player_number = constants.TIC_TAC_TOE_PLAYER_NUM
             self.players = [tic_tac_toe_player('X'),
                             tic_tac_toe_player('O')]
-            self.possible_pieces = [self.players[0].piece_type,[self.players[1].piece_type]]
+            self.possible_pieces = [self.players[0].piece_types[0],[self.players[1].piece_types[0]]]
             self.game_board = board(
                 constants.TIC_TAC_TOE_BOARD_LENGTH,
                 constants.TIC_TAC_TOE_BOARD_WIDTH)
@@ -23,7 +23,7 @@ class tic_tac_toe(game):
         if self.legal_move(x,y) == True:
             self.game_board.insert(x-1,y-1,  # -1 to convert user input values to array compatable
                                 self.players[
-                                self.current_player_index].piece_type)
+                                self.current_player_index].piece_types[0])
             self.current_player_index = (self.current_player_index +1)%2
             self.current_turn +=1
 

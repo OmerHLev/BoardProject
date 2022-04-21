@@ -30,6 +30,27 @@ class checkers(game):
                 else:
                     self.game_board.insert(j,i,player.piece_type)
 
+    def valid_action_input(self,action):
+        valid = False
+
+        while not valid:
+            if ((len(action)==4 or len(action)==5) and 
+            action[0] in constants.CHECKERS_VALID_COORDS and 
+            action[2] in constants.CHECKERS_VALID_COORDS and 
+            action[1]==',' and
+            action[3] in constants.CHECKERS_VALID_DIRECTION):
+                if len(action)==5: 
+                    if action[5] in constants.CHECKERS_VALID_DIRECTION:
+                        valid = True
+                    else:
+                        print("Not a move")
+                        action = input()
+                else:
+                    valid = True
                 
+            else:
+                print("Not a move")
+                action = input()
+        return action
 
     
