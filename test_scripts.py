@@ -1,4 +1,4 @@
 import numpy as np
-x = np.empty(3,3)
-print(2)
+
+x = np.zeros(9).reshape((3,3))
 print(x)
