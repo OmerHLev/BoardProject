@@ -1,5 +1,3 @@
-from turtle import st
-
 
 class piece:
     x=0

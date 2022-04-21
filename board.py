@@ -12,8 +12,8 @@ class board:
         for i in range (self.grid_length):
             for j in range (self.grid_width):
 
-                if self.board_array[(i,j)] ==0:
-                    self.board_array[(i,j)]='E'
+                if self.board_array[(i,j)] ==0: #board array is initialized to be all zeros
+                    self.board_array[(i,j)]='E' #E for Empty
         
 
     def check_in_board(self,x,y):
@@ -24,7 +24,7 @@ class board:
             return False
 
     def insert(self,x,y,content):
-        self.board_array[x-1][y-1] = content
+        self.board_array[x-1][y-1] = content # -1 to convert user input values to array compatable
 
     def print_board_state(self):
         print(self.board_array)

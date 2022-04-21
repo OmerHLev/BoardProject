@@ -1,16 +1,19 @@
 from board import board
 from game import game
 from player import tic_tac_toe_player
+import constants
 class tic_tac_toe(game):
     moves = []
     
     
     def __init__(self):
-            self.player_number = 2
+            self.player_number = constants.TIC_TAC_TOE_PLAYER_NUM
             self.players = [tic_tac_toe_player('X'),
                             tic_tac_toe_player('O')]
             self.moves = [self.players[0].piece_type,[self.players[1].piece_type]]
-            self.game_board = board(3,3)
+            self.game_board = board(
+                constants.TIC_TAC_TOE_BOARD_LENGTH,
+                constants.TIC_TAC_TOE_BOARD_WIDTH)
             self.current_player_index = 0
     
     def turn (self,action):
@@ -30,11 +33,11 @@ class tic_tac_toe(game):
 
     def valid_action(self,action):
         valid = False
-        nums = ["1","2","3"]
+
         while not valid:
             if (len(action)==3 and 
-            action[0] in nums and 
-            action[2] in nums and 
+            action[0] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and 
+            action[2] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and 
             action[1]==','):
                 valid = True
             else:
