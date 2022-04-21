@@ -1,3 +1,5 @@
+import numpy as np
+
 class board:
     grid_length = 0
     grid_width = 0
