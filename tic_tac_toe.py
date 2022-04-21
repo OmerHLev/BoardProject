@@ -1,15 +1,17 @@
 from board import board
 from game import game
+from player import tic_tac_toe_player
 class tic_tac_toe(game):
     moves = []
     
     
     def __init__(self):
             self.player_number = 2
-            self.players = ["X","O"]
-            self.moves = ['x','o']
+            self.players = [tic_tac_toe_player('X'),
+                            tic_tac_toe_player('O')]
+            self.moves = [self.players[0].piece_type,[self.players[1].piece_type]]
             self.game_board = board(3,3)
-            self.current_player = self.players[0]
+            self.current_player_index = 0
     
     def turn (self,action):
         action = self.valid_action(action)
@@ -17,20 +19,11 @@ class tic_tac_toe(game):
         y= int(action[2])
         
         if self.legal_move(x,y) == True:
-            
-            
-            if self.current_player == self.players[0]:
-                self.game_board.insert(x,y,'x')
-                self.current_player = self.players [1]
-                self.current_turn +=1
-            
-            
-            elif self.current_player == self.players[1]:
-                self.game_board.insert(x,y,'o')
-                self.current_player = self.players [0]
-                self.current_turn +=1
-            else:
-                print('GAME CORRUPTED')
+            self.game_board.insert(x,y,
+                                self.players[
+                                self.current_player_index].piece_type)
+            self.current_player_index = (self.current_player_index +1)%2
+            self.current_turn +=1
             
         else:
             print('ILLEGAL MOVE')
