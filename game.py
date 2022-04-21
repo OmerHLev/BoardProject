@@ -6,6 +6,7 @@ class game:
     game_board = 0
     current_player = 0
     current_turn = 0
+    possible_pieces = []
     
     def __init__(self):
         pass

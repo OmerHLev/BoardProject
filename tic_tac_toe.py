@@ -3,14 +3,13 @@ from game import game
 from player import tic_tac_toe_player
 import constants
 class tic_tac_toe(game):
-    pieces = []
     
     
     def __init__(self):
             self.player_number = constants.TIC_TAC_TOE_PLAYER_NUM
             self.players = [tic_tac_toe_player('X'),
                             tic_tac_toe_player('O')]
-            self.pieces = [self.players[0].piece_type,[self.players[1].piece_type]]
+            self.possible_pieces = [self.players[0].piece_type,[self.players[1].piece_type]]
             self.game_board = board(
                 constants.TIC_TAC_TOE_BOARD_LENGTH,
                 constants.TIC_TAC_TOE_BOARD_WIDTH)
@@ -22,7 +21,7 @@ class tic_tac_toe(game):
         y= int(action[2]) #grabbing the y value of the input
         
         if self.legal_move(x,y) == True:
-            self.game_board.insert(x,y,
+            self.game_board.insert(x-1,y-1,  # -1 to convert user input values to array compatable
                                 self.players[
                                 self.current_player_index].piece_type)
             self.current_player_index = (self.current_player_index +1)%2
@@ -59,7 +58,7 @@ class tic_tac_toe(game):
         d1 = self.check_diagonal_1()
         d2 = self.check_diagonal_2()
         v = self.check_vertical()
-        for i in self.pieces:
+        for i in self.possible_pieces:
             if i in [h,d1,d2,v]:
                 return True,i
         if self.current_turn == 9:
@@ -76,7 +75,7 @@ class tic_tac_toe(game):
             base = self.game_board.board_array[x][y]
             cell = self.game_board.board_array[x][y]
             for j in range(self.game_board.grid_width):
-                if (cell in self.pieces) and (cell == base):
+                if (cell in self.possible_pieces) and (cell == base):
                     if j == self.game_board.grid_width-1:
                         return base
                     else:
@@ -96,7 +95,7 @@ class tic_tac_toe(game):
             base = self.game_board.board_array[x][y]
             cell = self.game_board.board_array[x][y]
             for j in range(self.game_board.grid_length):
-                if (cell in self.pieces) and (cell == base):
+                if (cell in self.possible_pieces) and (cell == base):
                     if j == self.game_board.grid_width-1:
                         return base
                     else:
@@ -114,7 +113,7 @@ class tic_tac_toe(game):
         base = self.game_board.board_array[x][y]
         cell = self.game_board.board_array[x][y]
         for i in range(self.game_board.grid_length):
-            if (cell in self.pieces) and (cell == base):
+            if (cell in self.possible_pieces) and (cell == base):
                 if i == self.game_board.grid_width-1:
                         return base
                 else:
@@ -130,7 +129,7 @@ class tic_tac_toe(game):
         base = self.game_board.board_array[x][y]
         cell = self.game_board.board_array[x][y]
         for i in range(self.game_board.grid_length):
-            if (cell in self.pieces) and (cell == base):
+            if (cell in self.possible_pieces) and (cell == base):
                 if i == self.game_board.grid_width-1:
                         return base
                 else:
