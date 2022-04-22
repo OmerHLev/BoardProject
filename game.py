@@ -2,11 +2,10 @@ from board import board
 class game:
     player_number = 0
     players = []
-    game_type = ''
     game_board = 0
-    current_player = 0
+    current_player_index = 0
     current_turn = 0
-    possible_pieces = []
+    possible_pieces = []  # pieces_types
     
     def __init__(self):
         pass
@@ -25,4 +24,4 @@ class game:
             self.turn(input())
             ended,result = self.check_winner()
         print(result)
-        return result
+        return

@@ -2,16 +2,15 @@ from board import board
 from game import game
 from player import tic_tac_toe_player
 import constants
-class tic_tac_toe(game):
-    
-    
+
+class tic_tac_toe(game):   
     def __init__(self):
             self.player_number = constants.TIC_TAC_TOE_PLAYER_NUM
             self.players = [tic_tac_toe_player('X'),
                             tic_tac_toe_player('O')]
             self.possible_pieces = [self.players[0].piece_types[0],[self.players[1].piece_types[0]]]
             self.game_board = board(
-                constants.TIC_TAC_TOE_BOARD_LENGTH,
+                constants.TIC_TAC_TOE_BOARD_LENGTH, # height
                 constants.TIC_TAC_TOE_BOARD_WIDTH)
             self.current_player_index = 0
     
@@ -23,21 +22,21 @@ class tic_tac_toe(game):
         if self.legal_move(x,y) == True:
             self.game_board.insert(x-1,y-1,  # -1 to convert user input values to array compatable
                                 self.players[
-                                self.current_player_index].piece_types[0])
-            self.current_player_index = (self.current_player_index +1)%2
+                                self.current_player_index].piece_types[0])  # use dictionary
+            self.current_player_index = (self.current_player_index +1)%2   # comment
             self.current_turn +=1
 
     def valid_action_input(self,action):
         valid = False
 
         while not valid:
-            if (len(action)==3 and 
-            action[0] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and 
-            action[2] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and 
-            action[1]==','):
-                valid = True
+            if (len(action)==3 and # constant
+                action[0] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and  # remove input from name, change order
+                action[2] in constants.TIC_TAC_TOE_VALID_ACTIONS_INPUT and 
+                action[1]==','):
+                    valid = True
             else:
-                print("Not a move")
+                print("Invalid a move. Move format: x,y")
                 action = input()
         return action
 
@@ -75,7 +74,7 @@ class tic_tac_toe(game):
             base = self.game_board.board_array[x][y]
             cell = self.game_board.board_array[x][y]
             for j in range(self.game_board.grid_width):
-                if (cell in self.possible_pieces) and (cell == base):
+                if (cell == base):
                     if j == self.game_board.grid_width-1:
                         return base
                     else:
