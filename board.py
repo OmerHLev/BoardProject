@@ -16,7 +16,7 @@ class board:
                     self.board_array[(i,j)]='E' #E for Empty
         
 
-    def check_in_board(self,x,y): #check cell inside board
+    def is_cell_in_board(self,x,y):
         
         if (x<=self.grid_length) and (y<=self.grid_width):
             return True

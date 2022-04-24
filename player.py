@@ -5,14 +5,14 @@ class player:
     pieces_on_board = []
     piece_types = []
 
-    def __init__(self,name_input):  #player_name
-        self.name = name_input
+    def __init__(self,player_name):  #player_name
+        self.name = player_name
 
 
 class tic_tac_toe_player(player):
     def __init__(self,name_input):
         self.name = name_input
-        if name_input == 'X':
+        if name_input == 'X':       #dict
             self.piece_types = ['x']
         elif name_input == 'O':
             self.piece_types = ['o']
@@ -23,7 +23,7 @@ class tic_tac_toe_player(player):
 class checkers_player(player):
 
     def __init__(self, name_input):
-        if name_input == 'Black':
+        if name_input == 'Black': #dict
             self.name = name_input
             self.piece_types = ['b','kb']
         elif name_input == 'White':
